@@ -1,0 +1,60 @@
+<form action="/property/edit/<%= _id %>/<%= tab %>" method="post" class="form-horizontal" role="form">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="description" class="col-sm-4 control-label">Description</label>
+                <div class="col-sm-8">
+                    <textarea id="description" name="description" class="form-control"
+                              placeholder="Description"><%= description %></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="firstFloorDescription" class="col-sm-4 control-label">First Floor</label>
+                <div class="col-sm-8">
+                    <textarea id="firstFloorDescription" name="firstFloorDescription" class="form-control"
+                              placeholder="First Floor"><%= firstFloorDescription %></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="secondFloorDescription" class="col-sm-4 control-label">Second Floor</label>
+                <div class="col-sm-8">
+                    <textarea id="secondFloorDescription" name="secondFloorDescription" class="form-control"
+                              placeholder="Second Floor"><%= secondFloorDescription %></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="thirdFloorDescription" class="col-sm-4 control-label">Third Floor</label>
+                <div class="col-sm-8">
+                    <textarea id="thirdFloorDescription" name="thirdFloorDescription" class="form-control"
+                              placeholder="Third Floor"><%= thirdFloorDescription %></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="lowerLevelDescription" class="col-sm-4 control-label">Lower Level</label>
+                <div class="col-sm-8">
+                    <textarea id="lowerLevelDescription" name="lowerLevelDescription" class="form-control"
+                              placeholder="Lower Level"><%= lowerLevelDescription %></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="cottageDescription" class="col-sm-4 control-label">Cottage/Studio</label>
+                <div class="col-sm-8">
+                    <textarea id="cottageDescription" name="cottageDescription" class="form-control"
+                              placeholder="Cottage/Studio"><%= cottageDescription %></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

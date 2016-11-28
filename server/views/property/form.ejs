@@ -1,0 +1,39 @@
+<% include ../shared/header.ejs %>
+
+<div class="col-md-10">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="content-box-large">
+                <div class="panel-heading">
+                    <div class="panel-title"><%= formTitle %></div>
+                </div>
+                <div class="panel-body">
+                    <% if (typeof _id !== 'undefined' && _id) { %>
+                        <div class="navbar">
+                            <ul class="nav nav-tabs">
+                                <li role="presentation" class="<%= (tab === 'basic-info') ? 'active' : '' %>"><a href="/property/edit/<%= _id %>/basic-info">Basic Information</a></li>
+                                <li role="presentation" class="<%= (tab === 'description') ? 'active' : '' %>"><a href="/property/edit/<%= _id %>/description">Description</a></li>
+                                <li role="presentation" class="<%= (tab === 'images') ? 'active' : '' %>"><a href="/property/edit/<%= _id %>/images">Images</a></li>
+                                <li role="presentation" class="<%= (tab === 'bedrooms') ? 'active' : '' %>"><a href="/property/edit/<%= _id %>/bedrooms">Bedrooms &amp; Baths</a></li>
+                                <li role="presentation" class="<%= (tab === 'amenities') ? 'active' : '' %>"><a href="/property/edit/<%= _id %>/amenities">Amenities</a></li>
+                            </ul>
+                        </div>
+                    <% } %>
+                    <% if (tab === 'basic-info') { %>
+                    <% include tabs/basic-info.ejs %>
+                    <% } else if(typeof _id !== 'undefined' && _id && tab === 'description') { %>
+                    <% include tabs/description.ejs %>
+                    <% } else if(typeof _id !== 'undefined' && _id && tab === 'images') { %>
+                    <% include tabs/images.ejs %>
+                    <% } else if(typeof _id !== 'undefined' && _id && tab === 'bedrooms') { %>
+                    <% include tabs/bedrooms.ejs %>
+                    <% } else if(typeof _id !== 'undefined' && _id && tab === 'amenities') { %>
+                    <% include tabs/amenities.ejs %>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<% include ../shared/footer.ejs %>

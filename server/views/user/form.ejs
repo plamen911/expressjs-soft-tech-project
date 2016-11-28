@@ -1,0 +1,249 @@
+<% include ../shared/header.ejs %>
+
+<div class="col-md-10">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="content-box-large">
+                <div class="panel-heading">
+                    <div class="panel-title"><%= formTitle %></div>
+                </div>
+                <div class="panel-body">
+                    <form action="<%= formAction %>" method="post" enctype="multipart/form-data" class="form-horizontal" role="form">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="title" class="col-sm-4 control-label">Title</label>
+                                    <div class="col-sm-8">
+                                        <select id="title" name="title" class="form-control">
+                                            <option value="">- select -</option>
+                                            <% titleItems.forEach(function(item) { %>
+                                                <option value="<%= item  %>"<%= (item === title) ? ' selected' : '' %>><%= item  %></option>
+                                            <% }) %>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="firstName" class="col-sm-4 control-label">First Name</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" id="firstName" name="firstName" value="<%= firstName %>" class="form-control" placeholder="First Name">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="middleInit" class="col-sm-4 control-label">MI</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" id="middleInit" name="middleInit" value="<%= middleInit %>" class="form-control" placeholder="Middle Initials">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="lastName" class="col-sm-4 control-label">Last Name</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" id="lastName" name="lastName" value="<%= lastName %>" class="form-control" placeholder="Last Name">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="preferredName" class="col-sm-4 control-label">Preferred Name</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" id="preferredName" name="preferredName" value="<%= preferredName %>" class="form-control" placeholder="Preferred Name">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="company" class="col-sm-4 control-label">Company</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" id="company" name="company" value="<%= company %>" class="form-control" placeholder="Company">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">Username</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" id="username" name="username" class="form-control" value="<%= username %>" placeholder="Username">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="password" class="col-sm-4 control-label">Password</label>
+                                    <div class="col-sm-8">
+                                        <input type="password" id="password" name="password" value="" class="form-control" placeholder="Password">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="confirmPassword" class="col-sm-4 control-label">Confirm Password</label>
+                                    <div class="col-sm-8">
+                                        <input type="password" id="confirmPassword" name="confirmPassword" value="" class="form-control" placeholder="Confirm Password">
+                                    </div>
+                                </div>
+                                <% if (typeof avatar !== 'undefined' && avatar) { %>
+                                    <div class="form-group">
+                                        <label class="col-sm-4 control-label"></label>
+                                        <div class="col-sm-8">
+                                            <img class="img-responsive" src="/uploads/avatars/<%= avatar %>" alt="avatar image">
+                                        </div>
+                                    </div>
+                                <% } %>
+                                <% if (typeof newUser === 'undefined') { %>
+                                    <div class="form-group">
+                                        <label for="avatar" class="col-sm-4 control-label">Avatar</label>
+                                        <div class="col-sm-8">
+                                            <input type="file" id="avatar" name="avatar" accept="image/*">
+                                        </div>
+                                    </div>
+                                <% } %>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="streetAddr" class="col-sm-4 control-label">Street Address</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" id="streetAddr" name="streetAddr" value="<%= streetAddr %>" class="form-control" placeholder="Street Address">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="streetAddr2" class="col-sm-4 control-label">Street Address 2</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" id="streetAddr2" name="streetAddr2" value="<%= streetAddr2 %>" class="form-control" placeholder="Street Address 2">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="city" class="col-sm-4 control-label">City</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" id="city" name="city" value="<%= city %>" class="form-control" placeholder="City">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="state" class="col-sm-4 control-label">State</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" id="state" name="state" value="<%= state %>" class="form-control" placeholder="State">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="zip" class="col-sm-4 control-label">ZIP</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" id="zip" name="zip" value="<%= zip %>" class="form-control" placeholder="ZIP">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">
+                                        <a id="addEmail" href="#" class="btn">
+                                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                                        </a>
+                                        E-mails
+                                    </label>
+                                    <div class="col-sm-8">
+                                        <ul id="emailList" class="list-group" style="margin-bottom: 0;">
+                                            <% if (emails.length) { %>
+                                                <% for (var i = 0; i < emails.length; i++) { %>
+                                                    <li>
+                                                        <div class="input-group">
+                                                            <input type="email" name="emails[]" value="<%= emails[i] %>" placeholder="E-mail" class="form-control">
+                                                            <div class="input-group-btn">
+                                                                <a href="#" class="btn removeEmail">
+                                                                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                <% } %>
+                                            <% } %>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">
+                                        <a id="addPhone" href="#" class="btn">
+                                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                                        </a>
+                                        Phones
+                                    </label>
+                                    <div class="col-sm-8">
+                                        <ul id="phoneList" class="list-group" style="margin-bottom: 0;">
+                                            <% if (phones.length) { %>
+                                                <% for (i = 0; i < phones.length; i++) { %>
+                                                    <li>
+                                                        <div class="input-group my-group">
+                                                            <input type="tel" name="phoneNum[]" value="<%= phones[i].phoneNum %>" placeholder="Phone"
+                                                                   class="form-control"><select name="phoneType[]" class="form-control">
+                                                                <option value="">- select -</option>
+                                                                <% for (var j = 0; j < phoneTypes.length; j++) { %>
+                                                                <option value="<%= phoneTypes[j] %>"
+                                                                        <%= (phones[i].phoneType == phoneTypes[j]) ? ' selected' : '' %>>
+                                                                    <%= phoneTypes[j] %></option>
+                                                                <% } %>
+                                                            </select>
+                                                            <div class="input-group-btn">
+                                                                <a href="#" class="btn removePhone">
+                                                                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                <% } %>
+                                            <% } %>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="notes" class="col-sm-4 control-label">Notes</label>
+                                    <div class="col-sm-8">
+                                        <textarea id="notes" name="notes" class="form-control" placeholder="Notes"><%= notes %></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <div class="col-sm-offset-2 col-sm-10">
+                                        <button type="submit" class="btn btn-primary">Save</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="content-box-large">
+                <div class="panel-heading">
+                    <div class="panel-title">Properties</div>
+                </div>
+                <div class="panel-body">
+                    <% if (typeof properties !== 'undefined' && properties.length) { %>
+                        <div id="example_wrapper" class="dataTables_wrapper form-inline" role="grid">
+                            <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="example">
+                                <thead>
+                                    <tr>
+                                        <th>Area</th>
+                                        <th>Street Address</th>
+                                        <th colspan="2"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                <% properties.forEach(function(row, i) { %>
+                                    <tr class="<%= (i % 2 === 0) ? 'even' : 'odd' %>">
+                                        <td><%= row.area %></td>
+                                        <td><%= row.streetAddr %></td>
+                                        <td class="center"><a href="/property/edit/<%= row._id %>">View</a></td>
+                                    </tr>
+                                <% }) %>
+                                </tbody>
+                            </table>
+                        </div>
+                    <% } else { %>
+                        <p>No properties found.</p>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        window.setTimeout(function () {
+            $('#password, #confirmPassword').val('');
+        }, 100);
+    })
+</script>
+
+<% include ../shared/footer.ejs %>

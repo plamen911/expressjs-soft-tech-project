@@ -1,0 +1,34 @@
+.globalMessages {
+    position: absolute;
+    width: 100%;
+    z-index: 1;
+    text-align: center;
+}
+
+#emailList li, #phoneList li, #bedroomList li, #bathList li {
+    list-style-type: none;
+}
+
+ul#bedroomList.list-group li .form-control,
+ul#bathList.list-group li .form-control
+{
+    width: auto;
+    display: inline-block;
+    margin-bottom: 4px;
+    white-space: nowrap;
+}
+
+.my-group .form-control{
+    width:50%;
+}
+
+ul.sortableList li {
+    cursor: move;
+}
+
+div.property-thumb {
+    height: 200px;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+    background-position: center center !important;
+}

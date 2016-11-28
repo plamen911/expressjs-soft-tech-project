@@ -1,0 +1,212 @@
+<form action="/property/edit/<%= _id %>/<%= tab %>" method="post" class="form-horizontal" role="form">
+    <div class="row">
+        <div class="col-md-3">
+            <fieldset>
+                <legend>Household</legend>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" name="washer" value="1"<%= (washer) ? ' checked' : '' %>> Washer
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" name="dryer" value="1"<%= (dryer) ? ' checked' : '' %>> Dryer
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" name="iron" value="1"<%= (iron) ? ' checked' : '' %>> Iron
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" name="ironBoard" value="1"<%= (ironBoard) ? ' checked' : '' %>> Ironing Board
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" name="crib" value="1"<%= (crib) ? ' checked' : '' %>> Crib
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" name="highChair" value="1"<%= (highChair) ? ' checked' : '' %>> High Chair
+                    </label>
+                </div>
+            </fieldset>
+        </div>
+        <div class="col-md-3">
+            <fieldset>
+                <legend>Outdoors</legend>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" name="charcoalBBQ" value="1"<%= (charcoalBBQ) ? ' checked' : '' %>> Charcoal BBQ
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" name="gasBBQ" value="1"<%= (gasBBQ) ? ' checked' : '' %>> Gas BBQ
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" name="beachTowels" value="1"<%= (beachTowels) ? ' checked' : '' %>> Beach Towels
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" name="cooler" value="1"<%= (cooler) ? ' checked' : '' %>> Cooler
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" name="beachChairs" value="1"<%= (beachChairs) ? ' checked' : '' %>> Beach Chairs
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" name="outdoorShower" value="1"<%= (outdoorShower) ? ' checked' : '' %>> Outdoor Shower
+                    </label>
+                </div>
+            </fieldset>
+        </div>
+        <div class="col-md-3">
+            <fieldset>
+                <legend>Kitchen</legend>
+                <div class="form-group">
+                    <label for="stove" class="col-sm-4">Stove</label>
+                    <div class="col-sm-8">
+                        <select id="stove" name="stove" class="form-control">
+                            <option value="">- select -</option>
+                            <% ['Gas', 'Electric', 'Unknown'].forEach(function (item) { %>
+                                <option value="<%= item %>"<%= (item == stove) ? ' selected' : '' %>><%= item %></option>
+                            <% }) %>
+                        </select>
+                    </div>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" name="microwave" value="1"<%= (microwave) ? ' checked' : '' %>> Microwave
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" name="disposal" value="1"<%= (disposal) ? ' checked' : '' %>> Disposal
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" name="dishwasher" value="1"<%= (dishwasher) ? ' checked' : '' %>> Dishwasher
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" name="toaster" value="1"<%= (toaster) ? ' checked' : '' %>> Toaster
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" name="blender" value="1"<%= (blender) ? ' checked' : '' %>> Blender
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" name="mixer" value="1"<%= (mixer) ? ' checked' : '' %>> Mixer
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" name="coffeeMaker" value="1"<%= (coffeeMaker) ? ' checked' : '' %>> Coffee Maker
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" name="foodProcessor" value="1"<%= (foodProcessor) ? ' checked' : '' %>> Food Processor
+                    </label>
+                </div>
+            </fieldset>
+        </div>
+        <div class="col-md-3">
+            <fieldset>
+                <legend>Property</legend>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" name="yard" value="1"<%= (yard) ? ' checked' : '' %>> Yard
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" name="deck" value="1"<%= (deck) ? ' checked' : '' %>> Deck
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" name="porch" value="1"<%= (porch) ? ' checked' : '' %>> Porch
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" name="patio" value="1"<%= (patio) ? ' checked' : '' %>> Patio
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" name="outdoorFurniture" value="1"<%= (outdoorFurniture) ? ' checked' : '' %>> Outdoor Furniture
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" name="pool" value="1"<%= (pool) ? ' checked' : '' %>> Pool
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" name="hotTub" value="1"<%= (hotTub) ? ' checked' : '' %>> Hot Tub
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" name="usableFireplace" value="1"<%= (usableFireplace) ? ' checked' : '' %>> Usable Fireplace
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" name="woodStove" value="1"<%= (woodStove) ? ' checked' : '' %>> Woodstove
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label for="heat" class="col-sm-4">Heat</label>
+                    <div class="col-sm-8">
+                        <select id="heat" name="heat" class="form-control">
+                            <option value="">- select -</option>
+                            <% ['Gas', 'Electric', 'Oil'].forEach(function (item) { %>
+                            <option value="<%= item %>"<%= (item == heat) ? ' selected' : '' %>><%= item %></option>
+                            <% }) %>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="cooling" class="col-sm-4">Cooling</label>
+                    <div class="col-sm-8">
+                        <select id="cooling" name="cooling" class="form-control">
+                            <option value="">- select -</option>
+                            <% ['Central Air', 'Window Units'].forEach(function (item) { %>
+                            <option value="<%= item %>"<%= (item == cooling) ? ' selected' : '' %>><%= item %></option>
+                            <% }) %>
+                        </select>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

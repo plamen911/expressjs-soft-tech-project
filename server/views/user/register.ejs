@@ -1,0 +1,32 @@
+<% include ../shared/header.ejs %>
+
+<div class="col-md-4 col-md-offset-4">
+    <div class="login-wrapper">
+        <form action="/user/register" method="post">
+            <div class="box">
+                <div class="content-wrap">
+                    <h6>Sign Up</h6>
+                    <input type="text" id="username" name="username" value="<%= typeof username != 'undefined' ? username : '' %>" class="form-control" placeholder="Username">
+                    <input type="password" id="password" name="password" class="form-control" placeholder="Password">
+                    <input type="password" id="confirm-password" name="confirmPassword" class="form-control" placeholder="Confirm Password">
+                    <input type="text" id="first-name" name="firstName" value="<%= typeof firstName != 'undefined' ? firstName : '' %>" class="form-control" placeholder="First Name">
+                    <input type="text" id="last-name" name="lastName" value="<%= typeof lastName != 'undefined' ? lastName : '' %>" class="form-control" placeholder="Last Name">
+                    <div class="action">
+                        <input type="submit" value="Sign Up" class="btn btn-primary signup">
+                    </div>
+                </div>
+            </div>
+            <div class="already">
+                <p>Have an account already?</p>
+                <a href="/user/login">Login</a>
+            </div>
+        </form>
+    </div>
+</div>
+<script>
+    $(function () {
+        $('#username').focus();
+    });
+</script>
+
+<% include ../shared/footer.ejs %>

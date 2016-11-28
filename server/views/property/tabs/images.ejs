@@ -1,0 +1,103 @@
+<form action="/property/edit/<%= _id %>/images" method="post" class="form-horizontal" role="form" enctype="multipart/form-data">
+    <% if (typeof images !== 'undefined' && images.length) { %>
+        <div class="row">
+            <div class="col-md-12">
+                <p class="help-block">Tip: Drag and drop to sort the images. First image always becomes the property thumbnail.</p>
+            </div>
+        </div>
+        <div class="row">
+            <ul id="sortable" class="sortableList">
+                <% images.forEach(function (image, i) { %>
+                    <li id="image_<%= i %>" class="col-lg-3 col-md-4 col-xs-6 thumbnail">
+                        <div style="background: url('/uploads/photos/<%= image.imageFile %>');" class="property-thumb"></div>
+                        <div class="caption text-center">
+                            <p><input type="text" class="form-control" name="caption" value="<%= image.caption %>" placeholder="Image Caption..."></p>
+                            <a href="#" class="zoom" rel="/uploads/photos/<%= image.imageFile %>">zoom</a> | <a href="/property/edit/<%= _id %>/images/delete/<%= i %>" class="delete">delete</a>
+                        </div>
+                    </li>
+                <% }) %>
+            </ul>
+        </div>
+    <% } else { %>
+        <div class="row">
+            <div class="col-md-12">
+                <p>No uploaded photos.</p>
+            </div>
+        </div>
+    <% } %>
+
+    <div class="row">
+        <div class="col-md-12">
+            <hr>
+            <div class="form-inline">
+                <div class="form-group">
+                    <input id="photos" name="photos" accept="image/*" multiple="" type="file">
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <p class="help-block">Tip: Hold down &quot;Shift&quot; to select multiple.</p>
+        </div>
+    </div>
+</form>
+
+<div class="modal fade" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="myModalLabel">Image preview</h4>
+            </div>
+            <div class="modal-body">
+                <img src="#" id="imagepreview" class="img-responsive">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('#sortable').sortable({
+            handle: '.property-thumb',
+            update: function (event, ui) {
+                var self = this;
+                $.ajax({
+                    type: 'post',
+                    url: '/property/edit/<%= _id %>/images/sort',
+                    dataType: 'html',
+                    data: $(self).sortable('serialize'),
+                    success: function (result, textStatus, jqXHR) {
+                        // Handle the response content...
+                    }, // End success
+                    error: function (request, error) {
+                        var errmsg = ''
+                        if (error === 'timeout') errmsg = 'The request timed out'
+                        else errmsg = 'ERROR: ' + error;
+                        if (errmsg !== '') console.log(errmsg)
+                    }
+                });
+            }
+        });
+
+        $('a.delete').bind('click', function (e) {
+            if (!confirm('Are you sure you want to remove this photo?')) {
+                e.preventDefault();
+            }
+        });
+
+        $('a.zoom').bind('click', function (e) {
+            e.preventDefault();
+            $('#imagepreview').attr('src', $(this).attr('rel'));
+            $('#imagemodal').modal('show');
+        });
+
+    })
+</script>

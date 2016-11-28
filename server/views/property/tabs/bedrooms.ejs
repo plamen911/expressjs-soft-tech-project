@@ -1,0 +1,162 @@
+<form action="/property/edit/<%= _id %>/<%= tab %>" method="post" class="form-horizontal" role="form">
+    <div class="row">
+        <div class="col-md-12">
+            <label class="col-sm-12">
+                <a id="addBedroom" href="#" class="btn">
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                </a> Bedrooms
+            </label>
+            <ul id="bedroomList" class="list-group" style="margin-bottom: 0;">
+                <% if (bedrooms.length) { %>
+                    <% bedrooms.forEach(function(bedroom) { %>
+                        <li><label>Type of Bed: </label>
+                            <select name="bedroomType[]" class="form-control">
+                                <option value="">- select -</option>
+                                <% bedroomTypes.forEach(function (item) { %>
+                                    <option value="<%= item %>"<%= (bedroom.bedroomType == item) ? ' selected' : '' %>><%= item %></option>
+                                <% }) %>
+                            </select>
+                            <label>Located on Floor: </label>
+                            <select name="bedroomFloor[]" class="form-control">
+                                <option value="">- select -</option>
+                                <% floors.forEach(function (item) { %>
+                                    <option value="<%= item %>"<%= (bedroom.bedroomFloor == item) ? ' selected' : '' %>><%= item %></option>
+                                <% }) %>
+                            </select>
+                            <a href="#" class="btn removeBedroom">
+                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                            </a>
+                        </li>
+                    <% }) %>
+                <% } %>
+            </ul>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="bedroomsNum" class="col-sm-6 control-label">Number of Bedrooms:</label>
+                <div class="col-sm-6">
+                    <input type="text" id="bedroomsNum" name="bedroomsNum" value="<%= bedroomsNum %>" class="form-control" placeholder="Number of Bedrooms">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="sleepingCapacity" class="col-sm-6 control-label">Sleeping Capacity:</label>
+                <div class="col-sm-6">
+                    <input type="text" id="sleepingCapacity" name="sleepingCapacity" value="<%= sleepingCapacity %>" class="form-control" placeholder="Sleeping Capacity">
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-md-12">
+            <label class="col-sm-12"><a id="addBath" href="#" class="btn">
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                </a> Baths
+            </label>
+            <ul id="bathList" class="list-group" style="margin-bottom: 0;">
+                <% if (baths.length) { %>
+                    <% baths.forEach(function(bath) { %>
+                        <li><label>Type of Bath: </label>
+                            <select name="bathType[]" class="form-control">
+                                <option value="">- select -</option>
+                                <% bathTypes.forEach(function (item) { %>
+                                <option value="<%= item %>"<%= (bath.bathType == item) ? ' selected' : '' %>><%= item %></option>
+                                <% }) %>
+                            </select>
+                            <label>Located on Floor: </label>
+                            <select name="bathFloor[]" class="form-control">
+                                <option value="">- select -</option>
+                                <% floors.forEach(function (item) { %>
+                                <option value="<%= item %>"<%= (bath.bathFloor == item) ? ' selected' : '' %>><%= item %></option>
+                                <% }) %>
+                            </select>
+                            <a href="#" class="btn removeBath">
+                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                            </a>
+                        </li>
+                    <% }) %>
+                <% } %>
+            </ul>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="bathsNum" class="col-sm-6 control-label">Number of Baths:</label>
+                <div class="col-sm-6">
+                    <input type="text" id="bathsNum" name="bathsNum" value="<%= bathsNum %>" class="form-control" placeholder="Number of Baths">
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <div class="col-sm-offset-3 col-sm-9">
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<script>
+    $(function () {
+        $('#addBedroom').on('click', function (e) {
+            e.preventDefault()
+            var s = '<li><label>Type of Bed: </label> ' +
+                    '<select name="bedroomType[]" class="form-control">' +
+                    '<option value="">- select -</option>';
+                    <% bedroomTypes.forEach(function (item) { %>
+                        s += '<option value="<%= item %>"><%= item %></option>'
+                    <% }) %>
+                s += '</select> <label>Located on Floor: </label> ' +
+                     '<select name="bedroomFloor[]" class="form-control">' +
+                     '<option value="">- select -</option>';
+                    <% floors.forEach(function (item) { %>
+                        s += '<option value="<%= item %>"><%= item %></option>'
+                    <% }) %>
+                 s += '</select> ' +
+                      '<a href="#" class="btn removeBedroom">' +
+                       '<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>' +
+                       '</a></li>'
+            $('#bedroomList').append(s)
+        })
+
+        $('#addBath').on('click', function (e) {
+            e.preventDefault()
+            var s = '<li><label>Type of Bath: </label> ' +
+                    '<select name="bathType[]" class="form-control">' +
+                    '<option value="">- select -</option>';
+                    <% bathTypes.forEach(function (item) { %>
+                        s += '<option value="<%= item %>"><%= item %></option>'
+                    <% }) %>
+                s += '</select> <label>Located on Floor: </label> ' +
+                     '<select name="bathFloor[]" class="form-control">' +
+                     '<option value="">- select -</option>';
+                    <% floors.forEach(function (item) { %>
+                        s += '<option value="<%= item %>"><%= item %></option>'
+                    <% }) %>
+                 s += '</select> ' +
+                       '<a href="#" class="btn removeBath">' +
+                       '<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>' +
+                       '</a></li>'
+            $('#bathList').append(s)
+        })
+
+        $('#bedroomList').on('click', '.removeBedroom', function (e) {
+            e.preventDefault()
+            $(this).closest('li').remove()
+        })
+
+        $('#bathList').on('click', '.removeBath', function (e) {
+            e.preventDefault()
+            $(this).closest('li').remove()
+        })
+    });
+</script>

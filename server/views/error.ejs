@@ -1,0 +1,18 @@
+<% include ./shared/header.ejs %>
+
+<div class="col-md-10">
+    <div class="content-box-large">
+        <div class="panel-heading">
+            <div class="panel-title"><%= message %>
+                <% if (typeof error.status !== 'undefined' && error.status) { %>
+                    (<%= error.status %>)
+                <% } %>
+            </div>
+        </div>
+        <div class="panel-body">
+            <pre><%= error.stack %></pre>
+        </div>
+    </div>
+</div>
+
+<% include ./shared/footer.ejs %>

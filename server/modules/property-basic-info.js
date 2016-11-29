@@ -11,7 +11,7 @@ const pagination = require('../utilities/pagination')
 const User = require('mongoose').model('User')
 const Property = require('mongoose').model('Property')
 
-let getPropertyList = require('../utilities/property-data').getPropertyList
+let getPropertyList = require('../data/Property').getPropertyList
 
 let pageTitle = 'Property Information'
 let tab = 'basic-info'

@@ -1,9 +1,12 @@
-/* globals require */
+/* globals require, module, plugin */
 'use strict'
 
 const mongoose = require('mongoose')
 const mongoosePaginate = require('mongoose-paginate')
 let User = require('./User')
+
+const pagination = require('../utilities/pagination')
+
 const requiredValidationMessage = '{PATH} is required'
 
 let Schema = mongoose.Schema
@@ -106,3 +109,39 @@ propertySchema.pre('save', function (next) {
 propertySchema.plugin(mongoosePaginate);
 
 let Property = mongoose.model('Property', propertySchema)
+
+module.exports.getPropertyList = (req) => {
+    let keyword = req.query.keyword || req.query.kw || null
+    let limit = (req.query.limit && parseInt(req.query.limit, 10)) || 10
+
+    let query = {}
+    if (req.user.roles.indexOf('Owner') > -1) {
+        query._owner = req.user._id
+    }
+
+    if (keyword) {
+        const regexp = keyword.split(/\s+|,/)
+            .filter(function (kw) { return kw && kw.length > 1 })
+            .join('|')
+
+    }
+
+    let options = {
+        populate: '_owner _agent',
+        sort: { area: 1, streetAddr: 1, createdAt: -1 },
+        lean: true,
+        page: req.query.page || 1,
+        limit: limit
+    }
+
+    return new Promise((resolve, reject) => {
+        Property
+            .paginate(query, options)
+            .then(result => {
+                return resolve(pagination(req, result))
+            })
+            .catch(err => {
+                return reject(err)
+            })
+    })
+}

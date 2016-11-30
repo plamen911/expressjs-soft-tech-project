@@ -53,6 +53,8 @@ module.exports = (app, config) => {
   app.post('/owner/edit/:id', [].concat(auth.isAuthenticated, controllers.owner.save(app, config)))
   app.get('/owner/delete/:id', [].concat(auth.isAuthenticated, controllers.owner.delete(app, config)))
 
+  app.get('/test', [].concat(auth.isAuthenticated, controllers.property.test(app, config, '')))
+
   app.all('*', (req, res) => {
     res.status(404)
     res.send('404 Not Found')

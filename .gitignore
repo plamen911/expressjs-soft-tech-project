@@ -7,6 +7,7 @@ npm-debug.log*
 test_01.js
 test_02.js
 test_03.js
+test_04.js
 
 # Runtime data
 pids

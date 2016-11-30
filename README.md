@@ -71,6 +71,7 @@ https://plamen911rentalapp.herokuapp.com/ | https://git.heroku.com/plamen911rent
 - `systemctl restart nginx`
 - `vi /etc/nginx/nginx.conf`
 - `pm2 list`
+- `pm2 start app.js --name SimpleRentalApp`
 - `http://138.68.111.47/user/login`
 - `sudo apt-get install imagemagick`
 

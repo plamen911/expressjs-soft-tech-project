@@ -7,7 +7,13 @@
                 <div class="panel-heading">
                     <ol class="breadcrumb">
                         <li><a href="<%= propertyListUrl %>">Property List</a></li>
-                        <li class="active">Property Details</li>
+                        <li class="active">
+                            <% if (typeof _id !== 'undefined' && _id) { %>
+                                Property Details
+                            <% } else { %>
+                                Add New Property
+                            <% } %>
+                        </li>
                     </ol>
                     <div class="panel-title"><%= formTitle %></div>
                 </div>

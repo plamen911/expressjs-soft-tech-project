@@ -23,8 +23,8 @@
                     <% if (rows.length) { %>
                         <% for (var i = 0; i < rows.length; i++) { %>
                             <tr>
-                                <td><%= rows[i].firstName %></td>
-                                <td><%= rows[i].lastName %></td>
+                                <td><a href="/<%= action %>/edit/<%= rows[i]._id %>" title="Edit"><%= rows[i].firstName %></a></td>
+                                <td><a href="/<%= action %>/edit/<%= rows[i]._id %>" title="Edit"><%= rows[i].lastName %></a></td>
                                 <td><%= (typeof rows[i].emails[0] !== 'undefined') ? rows[i].emails[0] : '--' %></td>
                                 <td><%= (typeof rows[i].phones[0] !== 'undefined') ? rows[i].phones[0].phoneNum : '--' %></td>
                                 <td><%= rows[i].properties.length %></td>

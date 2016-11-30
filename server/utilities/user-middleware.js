@@ -17,10 +17,12 @@ module.exports = {
       let pageTitle = getPageTitle(role)
       let action = role.toLowerCase()
       let data = _.extend(getPostedData(req), {
+        role: role,
         pageTitle: pageTitle,
         formTitle: pageTitle,
         formAction: '/' + action + '/add/',
-        newUser: 1
+        newUser: 1,
+        userListUrl: req.session[action + 'ListUrl'] || '/' + action + '/list'
       })
 
       // form validation
@@ -73,9 +75,11 @@ module.exports = {
       let action = role.toLowerCase()
       let _id = req.params.id || 0
       let data = _.extend(getPostedData(req), {
+        role: role,
         pageTitle: pageTitle,
         formTitle: pageTitle,
-        formAction: '/' + action + '/edit/' + _id
+        formAction: '/' + action + '/edit/' + _id,
+        userListUrl: req.session[action + 'ListUrl'] || '/' + action + '/list'
       })
       let deleteOldFile = false
 
@@ -169,9 +173,11 @@ module.exports = {
                 .populate('properties')
                 .then((user) => {
                   let data = {
+                    role: role,
                     pageTitle: pageTitle,
                     formTitle: pageTitle,
-                    formAction: '/' + action + '/edit/' + user._id
+                    formAction: '/' + action + '/edit/' + user._id,
+                    userListUrl: req.session[action + 'ListUrl'] || '/' + action + '/list'
                   }
                   data = _.extend(getPostedData(req), data)
                   data = _.extend(data, user)
@@ -200,10 +206,12 @@ module.exports = {
       let action = role.toLowerCase()
 
       let data = {
+        role: role,
         pageTitle: pageTitle,
         formTitle: 'Add New ' + role,
         formAction: '/' + action + '/add',
-        newUser: 1
+        newUser: 1,
+        userListUrl: req.session[action + 'ListUrl'] || '/' + action + '/list'
       }
       data = _.extend(getPostedData(req), data)
       res.render('user/form', data)
@@ -225,12 +233,15 @@ module.exports = {
         action = 'agent'
       }
 
+      req.session[action + 'ListUrl'] = req.originalUrl
+
       let firstName = req.params.firstName || null
       let lastName = req.params.lastName || null
       let email = req.params.email || null
       let pageSize = (req.query.limit && parseInt(req.query.limit, 10)) || 10
 
         let data = {
+            role: role,
             pageTitle: pageTitle,
             rows: [],
             pagination: {},

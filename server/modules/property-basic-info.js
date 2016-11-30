@@ -27,7 +27,8 @@ module.exports = {
           agents: req.agents,
           areas: defines.getAreas(),
           newProperty: 1,
-          tab: tab
+          tab: tab,
+          propertyListUrl: req.session.propertyListUrl || '/property/list'
         })
 
                 // form validation
@@ -88,7 +89,8 @@ module.exports = {
                         agents: req.agents,
                         areas: defines.getAreas(),
                         _id: _id,
-                        tab: tab
+                        tab: tab,
+                        propertyListUrl: req.session.propertyListUrl || '/property/list'
                       }
 
                       data = _.extend(getPostedData(req), data)
@@ -128,7 +130,8 @@ module.exports = {
           agents: req.agents,
           areas: defines.getAreas(),
           _id: _id,
-          tab: tab
+          tab: tab,
+          propertyListUrl: req.session.propertyListUrl || '/property/list'
         })
 
                 // form validation
@@ -202,7 +205,8 @@ module.exports = {
           owners: req.owners,
           agents: req.agents,
           areas: defines.getAreas(),
-          tab: tab
+          tab: tab,
+          propertyListUrl: req.session.propertyListUrl || '/property/list'
         }
         data = _.extend(getPostedData(req), data)
         res.render('property/form', data)
@@ -214,6 +218,7 @@ module.exports = {
     return [
       (req, res, next) => {
         let pageTitle = 'Property List'
+        req.session.propertyListUrl = req.originalUrl
 
         getPropertyList(req)
                     .then(result => {

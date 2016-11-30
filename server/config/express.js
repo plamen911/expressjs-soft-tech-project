@@ -23,6 +23,12 @@ module.exports = (app, config) => {
   app.use(passport.initialize())
   app.use(passport.session())
   app.use((req, res, next) => {
+    req.getUrl = () => {
+      return req.protocol + '://' + req.get('host') + req.originalUrl
+    }
+    return next()
+  })
+  app.use((req, res, next) => {
     if (req.user) {
       let pageController = ''
       if (req.user.roles.indexOf('Owner') !== -1) {

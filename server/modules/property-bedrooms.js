@@ -29,7 +29,8 @@ module.exports = {
                     pageTitle: pageTitle,
                     formTitle: req.propertyQuickInfo,
                     _id: property._id,
-                    tab: tab
+                    tab: tab,
+                    propertyListUrl: req.session.propertyListUrl || '/property/list'
                 }
                 data = _.extend(getPostedData(req), data)
                 data = _.extend(data, property)
@@ -51,7 +52,8 @@ module.exports = {
                     pageTitle: pageTitle,
                     formTitle: req.propertyQuickInfo,
                     tab: tab,
-                    propertyQuickInfo: req.propertyQuickInfo
+                    propertyQuickInfo: req.propertyQuickInfo,
+                    propertyListUrl: req.session.propertyListUrl || '/property/list'
                 })
 
                 let property = req.property || null

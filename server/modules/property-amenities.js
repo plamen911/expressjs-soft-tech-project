@@ -30,7 +30,8 @@ module.exports = {
                     pageTitle: pageTitle,
                     formTitle: req.propertyQuickInfo,
                     _id: property._id,
-                    tab: tab
+                    tab: tab,
+                    propertyListUrl: req.session.propertyListUrl || '/property/list'
                 }
                 data = _.extend(getPostedData(req), data)
                 data = _.extend(data, property)
@@ -51,7 +52,8 @@ module.exports = {
                 let data = _.extend(getPostedData(req), {
                     pageTitle: pageTitle,
                     formTitle: req.propertyQuickInfo,
-                    tab: tab
+                    tab: tab,
+                    propertyListUrl: req.session.propertyListUrl || '/property/list'
                 })
 
                 if (!property) {

@@ -33,7 +33,8 @@ module.exports = {
                     formTitle: req.propertyQuickInfo,
                     _id: property._id,
                     tab: tab,
-                    photosPath: config.photosPath
+                    photosPath: config.photosPath,
+                    propertyListUrl: req.session.propertyListUrl || '/property/list'
                 }
                 data = _.extend(getPostedData(req), data)
                 data = _.extend(data, property)
@@ -62,7 +63,8 @@ module.exports = {
                     pageTitle: pageTitle,
                     formTitle: req.propertyQuickInfo,
                     tab: tab,
-                    photosPath: config.photosPath
+                    photosPath: config.photosPath,
+                    propertyListUrl: req.session.propertyListUrl || '/property/list'
                 })
 
                 let errors = []
@@ -194,7 +196,8 @@ module.exports = {
                     pageTitle: pageTitle,
                     formTitle: req.propertyQuickInfo,
                     tab: tab,
-                    photosPath: config.photosPath
+                    photosPath: config.photosPath,
+                    propertyListUrl: req.session.propertyListUrl || '/property/list'
                 })
 
                 Property

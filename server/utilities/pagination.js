@@ -11,21 +11,23 @@ module.exports = (req, data) => {
         totalResult: data.total,
         slashSeparator: false,
         template: (result) => {
+            result.prelink = req.originalUrl
+
             if (req.query) {
                 let qs = []
                 for (let key in req.query) {
                     if (key === 'page') continue
                     qs.push(key + '=' + encodeURIComponent(req.query[key]))
                 }
-                result.prelink += '?' + qs.join('&')
+                result.prelink = '?' + qs.join('&')
             }
 
             let i
             let len
             let prelink
             let html = '<ul class="pagination">'
-            if (result.pageCount < 2) {
-                html += '</ul></div>'
+            if (typeof result.pageCount === 'undefined' || result.pageCount < 2) {
+                html += '</ul>'
                 return html
             }
             prelink = boostrapPaginator.preparePreLink(result.prelink)

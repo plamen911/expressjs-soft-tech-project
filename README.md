@@ -143,18 +143,6 @@ You can set `$NVM_DIR` to any location, but leaving it unchanged from
 `/usr/local/Cellar/nvm/0.32.1` will destroy any nvm-installed Node installations
 upon upgrade/reinstall.
 
-#### Deployment on heroku
-
-- `heroku login`
-- `heroku create plamen911rentalapp`
-- `heroku config:set NODE_ENV=production`
-- `git push heroku master`
-- `heroku open`
-- `heroku logs --tail` - your logs
-
-
-https://plamen911rentalapp.herokuapp.com/ | https://git.heroku.com/plamen911rentalapp.git
-
 #### Deployment on DigitalOcean
 
 - `sudo nano /etc/nginx/sites-available/default`

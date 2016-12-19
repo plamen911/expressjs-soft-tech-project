@@ -2,7 +2,7 @@
 
 Design and implement a simple Web-based application, e.g. blog / forum / photo album / listings site / other.
 
-    Project URL: http://138.68.111.47
+Project live URL: http://138.68.111.47
 
 ### Technologies by Choice
 
